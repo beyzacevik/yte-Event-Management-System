@@ -19,6 +19,7 @@ public class Participant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "participant_id")
     private Long id;
 
     @Column(name = "name")
@@ -26,13 +27,14 @@ public class Participant {
     @Column(name = "surname")
     private String surname;
     @Column(name = "TC_NO")
-    private Long tcno;
+    private Long tc_no;
 
 
 
 
     @ManyToMany(mappedBy="participants")
-    private List<Event> events;
+    @Column(name = "events")
+    private Set<Event> events;
 
 
 

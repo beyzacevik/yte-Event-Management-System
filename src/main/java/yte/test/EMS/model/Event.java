@@ -23,6 +23,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "event_id")
     private Long id;
 
     @Column(name = "name")
@@ -45,10 +46,11 @@ public class Event {
 
 
     @ManyToMany( cascade = CascadeType.ALL)
+    @Column(name = "participants")
     @JoinTable(name = "event_participant",
-            joinColumns =  @JoinColumn(name = "event_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "participant_id", referencedColumnName = "id") )
-    private List<Participant> participants;
+            joinColumns =  @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "participant_id") )
+    private Set<Participant> participants;
 
 
 
